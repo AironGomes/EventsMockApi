@@ -1,23 +1,22 @@
 package com.airongomes.eventsapi.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.airongomes.eventsapi.R
+import com.airongomes.eventsapi.databinding.ItemEventBinding
 import com.airongomes.eventsapi.domain.model.Event
+import com.airongomes.eventsapi.extension.loadImage
 
 class EventAdapter: ListAdapter<Event, EventAdapter.ViewHolder>(Comparator()) {
 
     var onClick: ((eventId: Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_event, parent, false)
-        )
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ItemEventBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -25,12 +24,13 @@ class EventAdapter: ListAdapter<Event, EventAdapter.ViewHolder>(Comparator()) {
         holder.bind(item)
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+    inner class ViewHolder(private val binding: ItemEventBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Event) {
-            with(itemView) {
-
-            }
+            binding.eventTitle.text = item.title
+            binding.eventDate.text = item.date.toString()//TODO
+            binding.image.loadImage(item.image)
+            binding.root.setOnClickListener { onClick?.invoke(item.id) }
         }
     }
 }

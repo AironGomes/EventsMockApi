@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.airongomes.eventsapi.adapter.EventAdapter
 import com.airongomes.eventsapi.base.BaseFragment
 import com.airongomes.eventsapi.databinding.FragmentHomeBinding
@@ -23,6 +24,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fetchEvents()
+        setupAdapter()
+    }
+
+    private fun setupAdapter() {
+        binding.rvEvents.adapter = adapter
+
+        adapter.onClick = {
+            openEventDetail(it)
+        }
+    }
+
+    private fun openEventDetail(eventId: Int) {//TODO
+        findNavController().navigate(
+            HomeFragmentDirections.openEventDetails()
+        )
     }
 
     private fun fetchEvents() {
