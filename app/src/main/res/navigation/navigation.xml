@@ -19,5 +19,9 @@
         android:id="@+id/detailFragment"
         android:name="com.airongomes.eventsapi.ui.DetailFragment"
         android:label="Detalhes do Evento"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="event"
+            app:argType="com.airongomes.eventsapi.domain.model.Event" />
+    </fragment>
 </navigation>

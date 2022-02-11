@@ -11,6 +11,7 @@ import com.airongomes.eventsapi.R
 import com.airongomes.eventsapi.adapter.EventAdapter
 import com.airongomes.eventsapi.base.BaseFragment
 import com.airongomes.eventsapi.databinding.FragmentHomeBinding
+import com.airongomes.eventsapi.domain.model.Event
 import com.airongomes.eventsapi.domain.remote.NetworkResult
 import com.airongomes.eventsapi.viewModel.HomeViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -61,9 +62,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         Toast.makeText(requireContext(), text, Toast.LENGTH_LONG).show()
     }
 
-    private fun openEventDetail(eventId: Int) {//TODO
+    private fun openEventDetail(event: Event) {
         findNavController().navigate(
-            HomeFragmentDirections.openEventDetails()
+            HomeFragmentDirections.openEventDetails(event)
         )
     }
 }

@@ -11,7 +11,7 @@ import com.airongomes.eventsapi.extension.loadImage
 
 class EventAdapter: ListAdapter<Event, EventAdapter.ViewHolder>(Comparator()) {
 
-    var onClick: ((eventId: Int) -> Unit)? = null
+    var onClick: ((event: Event) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -30,7 +30,7 @@ class EventAdapter: ListAdapter<Event, EventAdapter.ViewHolder>(Comparator()) {
             binding.eventTitle.text = item.title
             binding.eventDate.text = item.date.toString()//TODO
             binding.image.loadImage(item.image)
-            binding.root.setOnClickListener { onClick?.invoke(item.id) }
+            binding.root.setOnClickListener { onClick?.invoke(item) }
         }
     }
 }
