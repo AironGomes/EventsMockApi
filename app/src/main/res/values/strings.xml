@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Events Api</string>
+    <string name="error_load_message">Unable to load data.</string>
 </resources>
