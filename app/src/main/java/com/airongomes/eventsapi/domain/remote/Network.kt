@@ -7,7 +7,7 @@ sealed class NetworkResult<T>(
     val message: String? = null
 ) {
     class Loading<T> : NetworkResult<T>()
-    class Error<T>(message: String, data: T? = null) : NetworkResult<T>(data, message)
+    class Error<T>(message: String = "Unexpected error.", data: T? = null) : NetworkResult<T>(data, message)
     class Success<T>(data: T) : NetworkResult<T>(data)
 }
 

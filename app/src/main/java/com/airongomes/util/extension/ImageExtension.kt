@@ -1,4 +1,4 @@
-package com.airongomes.eventsapi.extension
+package com.airongomes.util.extension
 
 import android.widget.ImageView
 import androidx.core.net.toUri

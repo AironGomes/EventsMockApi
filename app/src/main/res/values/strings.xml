@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Events Api</string>
     <string name="error_load_message">Unable to load data.</string>
+    <string name="event_price">Valor: R$ %1$.2f</string>
+    <string name="name">Nome Completo</string>
+    <string name="email">E-mail</string>
+    <string name="ok">Confirmar</string>
+    <string name="checkin">Participar</string>
+    <string name="invalid_email_error">O e-mail é inválido. Tente novamente!</string>
+    <string name="bottom_sheet_title">Confirme sua presença no evento</string>
+    <string name="filling_required_error">Todos os campos devem ser preenchidos</string>
+    <string name="checkin_error">Ocorreu um erro ao realizar o checkIn. Por favor tente novamente!</string>
+    <string name="checkin_successful_msg">Sua inscrição foi realizada com sucesso!</string>
 </resources>

@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.airongomes.eventsapi.databinding.ItemEventBinding
 import com.airongomes.eventsapi.domain.model.Event
-import com.airongomes.eventsapi.extension.loadImage
+import com.airongomes.util.extension.loadImage
+import com.airongomes.util.extension.toDate
 
 class EventAdapter: ListAdapter<Event, EventAdapter.ViewHolder>(Comparator()) {
 
@@ -26,11 +27,11 @@ class EventAdapter: ListAdapter<Event, EventAdapter.ViewHolder>(Comparator()) {
 
     inner class ViewHolder(private val binding: ItemEventBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Event) {
-            binding.eventTitle.text = item.title
-            binding.eventDate.text = item.date.toString()//TODO
-            binding.image.loadImage(item.image)
-            binding.root.setOnClickListener { onClick?.invoke(item) }
+        fun bind(event: Event) {
+            binding.eventTitle.text = event.title
+            binding.eventDate.text = event.date.toDate()
+            binding.image.loadImage(event.image)
+            binding.root.setOnClickListener { onClick?.invoke(event) }
         }
     }
 }

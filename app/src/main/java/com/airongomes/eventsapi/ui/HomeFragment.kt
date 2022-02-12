@@ -2,7 +2,6 @@ package com.airongomes.eventsapi.ui
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -14,6 +13,7 @@ import com.airongomes.eventsapi.databinding.FragmentHomeBinding
 import com.airongomes.eventsapi.domain.model.Event
 import com.airongomes.eventsapi.domain.remote.NetworkResult
 import com.airongomes.eventsapi.viewModel.HomeViewModel
+import com.airongomes.util.extension.showMessage
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -50,16 +50,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         }
                         is NetworkResult.Error -> {
                             binding.swipeRefreshLayout.isRefreshing = false
-                            showMessage(getString(R.string.error_load_message))
+                            requireView().showMessage(getString(R.string.error_load_message))
                         }
                     }
                 }
             }
         }
-    }
-
-    private fun showMessage(text: String) {
-        Toast.makeText(requireContext(), text, Toast.LENGTH_LONG).show()
     }
 
     private fun openEventDetail(event: Event) {
