@@ -9,8 +9,8 @@ import com.airongomes.eventsapi.R
 import com.airongomes.eventsapi.base.BaseFragment
 import com.airongomes.eventsapi.databinding.FragmentDetailBinding
 import com.airongomes.eventsapi.domain.model.Event
-import com.airongomes.util.extension.loadImage
-import com.airongomes.util.extension.toDateTime
+import com.airongomes.eventsapi.util.extension.loadImage
+import com.airongomes.eventsapi.util.extension.toDateTime
 
 class DetailFragment: BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate) {
 

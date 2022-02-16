@@ -13,7 +13,7 @@ import com.airongomes.eventsapi.databinding.FragmentHomeBinding
 import com.airongomes.eventsapi.domain.model.Event
 import com.airongomes.eventsapi.domain.remote.NetworkResult
 import com.airongomes.eventsapi.viewModel.HomeViewModel
-import com.airongomes.util.extension.showMessage
+import com.airongomes.eventsapi.util.extension.showMessage
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
