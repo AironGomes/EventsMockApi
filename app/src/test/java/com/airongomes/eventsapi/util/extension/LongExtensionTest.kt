@@ -1,14 +1,14 @@
 package com.airongomes.eventsapi.util.extension
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.airongomes.BaseUnitTest
+import com.airongomes.eventsapi.BaseAndroidJUnitTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class LongExtensionTest: BaseUnitTest() {
+class LongExtensionTest: BaseAndroidJUnitTest() {
 
     private val timestamp = 1534784400000L
 

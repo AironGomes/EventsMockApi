@@ -4,14 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.airongomes.eventsapi.domain.model.Event
 import com.airongomes.eventsapi.domain.remote.NetworkResult
-import com.airongomes.eventsapi.domain.repository.EventRepository
+import com.airongomes.eventsapi.domain.usecase.FetchEventsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repository: EventRepository
+    private val fetchEventsUseCase: FetchEventsUseCase
 ): ViewModel() {
 
     init {
@@ -23,10 +22,7 @@ class HomeViewModel(
 
     fun fetchEventList() {
         viewModelScope.launch {
-            repository.getEventList()
-                .catch {
-                    _eventList.value = NetworkResult.Error()
-                }
+            fetchEventsUseCase()
                 .collect {
                     _eventList.value = it
                 }

@@ -80,7 +80,7 @@ class CheckInBottomSheet(val event: Event) : BottomSheetDialogFragment() {
     private fun fetchCheckInResult() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.checkIntResult.collectLatest {
+                viewModel.checkInResult.collectLatest {
                     when (it) {
                         is NetworkResult.Loading -> {}
                         is NetworkResult.Error -> {

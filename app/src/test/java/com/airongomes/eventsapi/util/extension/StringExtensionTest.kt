@@ -1,7 +1,7 @@
 package com.airongomes.eventsapi.util.extension
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.airongomes.BaseUnitTest
+import com.airongomes.eventsapi.BaseAndroidJUnitTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.everyItem
 import org.hamcrest.MatcherAssert.assertThat
@@ -9,7 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class StringExtensionTest: BaseUnitTest() {
+class StringExtensionTest: BaseAndroidJUnitTest() {
 
     @Test
     fun `Given null value When calling toStringOrEmpty() Then return empty string`(){

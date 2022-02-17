@@ -1,8 +1,8 @@
-package com.airongomes
+package com.airongomes.eventsapi
 
 import org.junit.After
 import org.koin.core.context.stopKoin
 
-abstract class BaseUnitTest {
+abstract class BaseAndroidJUnitTest {
     @After fun tearDown() = stopKoin()
 }
