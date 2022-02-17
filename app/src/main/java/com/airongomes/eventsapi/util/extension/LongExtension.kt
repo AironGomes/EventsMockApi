@@ -1,4 +1,4 @@
-package com.airongomes.util.extension
+package com.airongomes.eventsapi.util.extension
 
 import android.text.format.DateFormat
 import java.util.*

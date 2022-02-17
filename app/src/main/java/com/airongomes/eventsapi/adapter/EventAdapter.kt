@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.airongomes.eventsapi.databinding.ItemEventBinding
 import com.airongomes.eventsapi.domain.model.Event
-import com.airongomes.util.extension.loadImage
-import com.airongomes.util.extension.toDate
+import com.airongomes.eventsapi.util.extension.loadImage
+import com.airongomes.eventsapi.util.extension.toDate
 
 class EventAdapter: ListAdapter<Event, EventAdapter.ViewHolder>(Comparator()) {
 

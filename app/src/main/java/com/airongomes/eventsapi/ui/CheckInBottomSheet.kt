@@ -1,8 +1,6 @@
 package com.airongomes.eventsapi.ui
 
 import android.os.Bundle
-import android.text.Editable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +13,7 @@ import com.airongomes.eventsapi.domain.model.CheckIn
 import com.airongomes.eventsapi.domain.model.Event
 import com.airongomes.eventsapi.domain.remote.NetworkResult
 import com.airongomes.eventsapi.viewModel.CheckInViewModel
-import com.airongomes.util.extension.*
+import com.airongomes.eventsapi.util.extension.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -43,16 +41,16 @@ class CheckInBottomSheet(val event: Event) : BottomSheetDialogFragment() {
 
     private fun setupCheckIn() {
         binding.checkinButton.setOnClickListener {
-            val name = binding.checkinName.editText?.text
-            val email = binding.checkinEmail.editText?.text
+            val name = binding.checkinName.editText?.text.toStringOrEmpty()
+            val email = binding.checkinEmail.editText?.text.toStringOrEmpty()
             if (areValidFields(name, email)) {
-                registerForEvent(name.toString(), email.toString())
+                registerForEvent(name, email)
             }
         }
 
     }
 
-    private fun areValidFields(name: Editable?, email: Editable?): Boolean =
+    private fun areValidFields(name: String, email: String): Boolean =
         when {
             !name.hasValidField() -> {
                 requireView().showMessage(getString(R.string.filling_required_error))
@@ -82,7 +80,7 @@ class CheckInBottomSheet(val event: Event) : BottomSheetDialogFragment() {
     private fun fetchCheckInResult() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.checkIntResult.collectLatest {
+                viewModel.checkInResult.collectLatest {
                     when (it) {
                         is NetworkResult.Loading -> {}
                         is NetworkResult.Error -> {
